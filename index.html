@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>IMAGE</title>
+  
+</head>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+  socket.on('img', function(data){
+    let txt = document.getElementById('body').innerHTML;
+    txt = txt + '<img  src="'+data+'">';
+    document.getElementById('body').innerHTML = txt;
+  })
+  socket.on('titre', function(data){
+    let txt = document.getElementById('body').innerHTML;
+    txt = txt + '<h1>'+data+'</h1>';
+    document.getElementById('body').innerHTML = txt;
+  })
+  socket.on('p', function(data){
+    let txt = document.getElementById('body').innerHTML;
+    txt = txt + '<p>'+data+'</p>';
+    document.getElementById('body').innerHTML = txt;
+  })
+  socket.on('clear', function(data){
+    document.getElementById('body').innerHTML = "";
+  })
+  socket.on('claire', function(data){
+    document.getElementById('body').style.color = "black"
+    document.getElementById('body').style.background = "white"
+  })
+  socket.on('sombre', function(data){
+    document.getElementById('body').style.color = "white"
+    document.getElementById('body').style.background = "black"
+  })
+
+
+</script>
+<body id="body" class="claire">
+
+
+   
+</body>
+</html>
+<style>
+</style>
